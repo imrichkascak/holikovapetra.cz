@@ -16,8 +16,8 @@ export function About() {
           <ScrollReveal variant="fade" className="relative">
             <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
               <Image
-                src="/images/okamziky/7.jpg"
-                alt="Fotografie Petry Holíkové"
+                src="/images/about.jpg"
+                alt="Petra Holíková — fotografka"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
@@ -83,7 +83,7 @@ export function About() {
                   Napište mi
                 </a>
                 <a
-                  href="https://www.instagram.com/"
+                  href="https://www.instagram.com/fotograf_holikova_petra/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-dust hover:text-gold text-sm font-sans transition-colors duration-200 flex items-center gap-2"

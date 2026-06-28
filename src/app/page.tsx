@@ -10,17 +10,10 @@ import { Footer } from "@/components/Footer";
 
 /* ─── Image data ─────────────────────────────────────────────────── */
 
-const produktyPhotos = [
-  { src: "/images/produkty/TFKF9401.jpg", alt: "Produktová fotografie — detail výrobku" },
-  { src: "/images/produkty/TFKF9420.jpg", alt: "Produktová fotografie — studio" },
-  { src: "/images/produkty/TFKF9435.jpg", alt: "Produktová fotografie — kompozice" },
-  { src: "/images/produkty/TFKF9454.jpg", alt: "Produktová fotografie — lifestyle" },
-];
-
 const provasPhotos = [
-  { src: "/images/provas/522A4562_1.jpg", alt: "Focení provázkové akce — taneční pár" },
-  { src: "/images/provas/522A5026.jpg", alt: "Focení provázkové akce — atmosféra večera" },
-  { src: "/images/provas/522A5105.jpg", alt: "Focení provázkové akce — detaily" },
+  { src: "/images/provas/522A4562_1.jpg", alt: "Pro vás — taneční pár" },
+  { src: "/images/provas/522A5026.jpg", alt: "Pro vás — atmosféra večera" },
+  { src: "/images/provas/522A5105.jpg", alt: "Pro vás — detaily" },
 ];
 
 const okamzikyPhotos = [
@@ -31,26 +24,44 @@ const okamzikyPhotos = [
 
 const horizontalImages = [
   { src: "/images/okamziky/1.jpg", alt: "Okamžiky", category: "Okamžiky" },
-  { src: "/images/provas/522A4562_1.jpg", alt: "Provas", category: "Provas" },
-  { src: "/images/produkty/TFKF9401.jpg", alt: "Produkty", category: "Produkty" },
+  { src: "/images/provas/522A4562_1.jpg", alt: "Pro vás", category: "Pro vás" },
+  { src: "/images/gallery/TFKF8515.jpg", alt: "Galerie", category: "Galerie" },
   { src: "/images/okamziky/7.jpg", alt: "Okamžiky", category: "Okamžiky" },
-  { src: "/images/provas/522A5026.jpg", alt: "Provas", category: "Provas" },
-  { src: "/images/produkty/TFKF9435.jpg", alt: "Produkty", category: "Produkty" },
+  { src: "/images/provas/522A5026.jpg", alt: "Pro vás", category: "Pro vás" },
+  { src: "/images/gallery/IMG_3602_2.jpg", alt: "Galerie", category: "Galerie" },
   { src: "/images/okamziky/DSC_0184.jpg", alt: "Okamžiky", category: "Okamžiky" },
-  { src: "/images/provas/522A5105.jpg", alt: "Provas", category: "Provas" },
+  { src: "/images/gallery/80236784_2769511283145404_1259329615717990400_n-4.jpg", alt: "Galerie", category: "Galerie" },
+  { src: "/images/provas/522A5105.jpg", alt: "Pro vás", category: "Pro vás" },
+  { src: "/images/gallery/TFKF8883_1.jpg", alt: "Galerie", category: "Galerie" },
 ];
 
 const galleryImages = [
-  { src: "/images/produkty/TFKF9401.jpg", alt: "Produktová fotografie" },
-  { src: "/images/provas/522A4562_1.jpg", alt: "Ples — taneční pár", span: "tall" as const },
+  { src: "/images/gallery/29.jpg", alt: "Fotografie" },
+  { src: "/images/provas/522A4562_1.jpg", alt: "Pro vás — taneční pár", span: "tall" as const },
+  { src: "/images/gallery/DSC_0022_1.jpg", alt: "Portrét" },
+  { src: "/images/gallery/TFKF8515.jpg", alt: "Fotografie" },
   { src: "/images/okamziky/1.jpg", alt: "Zachycený okamžik" },
-  { src: "/images/produkty/TFKF9420.jpg", alt: "Produktové focení" },
+  { src: "/images/gallery/80236784_2769511283145404_1259329615717990400_n-4.jpg", alt: "Fotografie", span: "tall" as const },
+  { src: "/images/gallery/DSC_0148.jpg", alt: "Portrét" },
+  { src: "/images/provas/522A5026.jpg", alt: "Pro vás — atmosféra" },
+  { src: "/images/gallery/TFKF8861.jpg", alt: "Fotografie" },
+  { src: "/images/gallery/IMG_3602_2.jpg", alt: "Fotografie", span: "tall" as const },
   { src: "/images/okamziky/7.jpg", alt: "Okamžik" },
-  { src: "/images/provas/522A5026.jpg", alt: "Ples — atmosféra", span: "tall" as const },
-  { src: "/images/produkty/TFKF9435.jpg", alt: "Produktová kompozice" },
+  { src: "/images/gallery/45.jpg", alt: "Fotografie" },
+  { src: "/images/gallery/DSC_0184.jpg", alt: "Detail" },
+  { src: "/images/provas/522A5105.jpg", alt: "Pro vás — detaily" },
+  { src: "/images/gallery/TFKF8547-0.jpg", alt: "Fotografie" },
+  { src: "/images/gallery/IMG_3495.jpg", alt: "Fotografie" },
+  { src: "/images/gallery/80315343_435940383954365_8564820406391799808_n-2.jpg", alt: "Fotografie" },
+  { src: "/images/gallery/TFKF8883_1.jpg", alt: "Fotografie" },
+  { src: "/images/gallery/DSC_0058_1.jpg", alt: "Fotografie" },
+  { src: "/images/gallery/IMG_0887.jpg", alt: "Fotografie" },
+  { src: "/images/gallery/TFKF9024.jpg", alt: "Fotografie" },
   { src: "/images/okamziky/DSC_0184.jpg", alt: "Detail" },
-  { src: "/images/produkty/TFKF9454.jpg", alt: "Lifestyle fotografie" },
-  { src: "/images/provas/522A5105.jpg", alt: "Ples — detaily" },
+  { src: "/images/gallery/120134271_3409187615812613_3923097025196652216_o.jpg", alt: "Fotografie" },
+  { src: "/images/gallery/IMG_0915.jpg", alt: "Fotografie" },
+  { src: "/images/gallery/120156686_3409187612479280_3025171193573527671_o.jpg", alt: "Fotografie" },
+  { src: "/images/gallery/IMG_3508.jpg", alt: "Fotografie" },
 ];
 
 export default function Home() {
@@ -72,28 +83,20 @@ export default function Home() {
         {/* Work sections */}
         <div id="prace">
           <WorkSection
-            id="produkty"
-            label="01 — Produktové foto"
-            title="Vše pro Vás"
-            description="Profesionální produktové fotografie pro e-shopy, katalogy a marketingové materiály. Každý produkt si zaslouží tu nejlepší prezentaci."
-            photos={produktyPhotos}
+            id="okamziky"
+            label="01 — Okamžiky"
+            title="Nejkrásnější okamžiky"
+            description="Rodinné fotografie, příroda, každodenní krásy. Ty nejcennější jsou ty, které bychom si jinak nepamatovali."
+            photos={okamzikyPhotos}
           />
 
           <WorkSection
             id="provas"
-            label="02 — Provas & Plesy"
+            label="02 — Pro vás"
             title="Nezapomenutelné dny"
             description="Plesy, promy, a slavnostní večery plné emocí. Zachycuji atmosféru, pohyb a radost — okamžiky, na které budete vzpomínat celý život."
             photos={provasPhotos}
             accent
-          />
-
-          <WorkSection
-            id="okamziky"
-            label="03 — Okamžiky"
-            title="Nejkrásnější okamžiky"
-            description="Rodinné fotografie, příroda, každodenní krásy. Ty nejcennější jsou ty, které bychom si jinak nepamatovali."
-            photos={okamzikyPhotos}
           />
         </div>
 

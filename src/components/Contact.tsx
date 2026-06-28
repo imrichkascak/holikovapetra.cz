@@ -116,7 +116,7 @@ export function Contact() {
 
                 <div className="flex gap-4 pt-2">
                   <a
-                    href="https://www.facebook.com/"
+                    href="https://www.facebook.com/PetraHolikovaFotograf"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook (otevře se v novém okně)"
@@ -139,7 +139,7 @@ export function Contact() {
                     </svg>
                   </a>
                   <a
-                    href="https://www.instagram.com/"
+                    href="https://www.instagram.com/fotograf_holikova_petra/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram (otevře se v novém okně)"

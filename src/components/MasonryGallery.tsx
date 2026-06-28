@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ScrollReveal } from "./ScrollReveal";
 import { cn } from "@/lib/utils";
 
@@ -9,6 +9,7 @@ interface GalleryImage {
   src: string;
   alt: string;
   span?: "tall" | "wide" | "normal";
+  ratio?: "square" | "portrait" | "tall";
 }
 
 interface MasonryGalleryProps {
@@ -17,7 +18,30 @@ interface MasonryGalleryProps {
 }
 
 export function MasonryGallery({ id, images }: MasonryGalleryProps) {
-  const [lightbox, setLightbox] = useState<GalleryImage | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const lightbox = lightboxIndex !== null ? images[lightboxIndex] : null;
+
+  const close = useCallback(() => setLightboxIndex(null), []);
+
+  const prev = useCallback(() => {
+    setLightboxIndex((i) => (i !== null ? (i - 1 + images.length) % images.length : null));
+  }, [images.length]);
+
+  const next = useCallback(() => {
+    setLightboxIndex((i) => (i !== null ? (i + 1) % images.length : null));
+  }, [images.length]);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxIndex, close, prev, next]);
 
   return (
     <section
@@ -49,19 +73,26 @@ export function MasonryGallery({ id, images }: MasonryGalleryProps) {
               role="listitem"
             >
               <button
-                onClick={() => setLightbox(img)}
+                onClick={() => setLightboxIndex(i)}
                 className="group relative block w-full overflow-hidden rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
                 aria-label={`Zobrazit fotografii: ${img.alt}`}
               >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={600}
-                  height={img.span === "tall" ? 900 : 600}
-                  className="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                  quality={85}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
+                {/* Fixed aspect-ratio wrapper prevents layout shift before image loads */}
+                <div
+                  className={cn(
+                    "relative w-full",
+                    img.span === "tall" ? "aspect-[2/3]" : "aspect-[3/4]"
+                  )}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    quality={85}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
                 <div
                   className="absolute inset-0 bg-ink/0 group-hover:bg-ink/25 transition-colors duration-500 flex items-center justify-center"
                   aria-hidden="true"
@@ -91,47 +122,77 @@ export function MasonryGallery({ id, images }: MasonryGalleryProps) {
       </div>
 
       {/* Lightbox */}
-      {lightbox && (
+      {lightbox && lightboxIndex !== null && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`Fotografie: ${lightbox.alt}`}
+          aria-label={`Fotografie ${lightboxIndex + 1} z ${images.length}: ${lightbox.alt}`}
           className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
-          onClick={() => setLightbox(null)}
+          onClick={close}
         >
+          {/* Close */}
           <button
-            onClick={() => setLightbox(null)}
-            aria-label="Zavřít náhled"
+            onClick={close}
+            aria-label="Zavřít náhled (Esc)"
             className={cn(
-              "absolute top-6 right-6 text-cream/70 hover:text-cream transition-colors",
+              "absolute top-6 right-6 text-cream/70 hover:text-cream transition-colors z-10",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             )}
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M18 6L6 18M6 6l12 12"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           </button>
+
+          {/* Counter */}
+          <p className="absolute top-6 left-1/2 -translate-x-1/2 text-cream/40 text-xs font-sans tracking-widest select-none">
+            {lightboxIndex + 1} / {images.length}
+          </p>
+
+          {/* Prev arrow */}
+          <button
+            onClick={(e) => { e.stopPropagation(); prev(); }}
+            aria-label="Předchozí fotografie (←)"
+            className={cn(
+              "absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10",
+              "w-11 h-11 rounded-full bg-cream/10 hover:bg-cream/20 border border-cream/20 hover:border-cream/40",
+              "text-cream flex items-center justify-center transition-all duration-200",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+            )}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M11 3.5L5.5 9l5.5 5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          {/* Next arrow */}
+          <button
+            onClick={(e) => { e.stopPropagation(); next(); }}
+            aria-label="Následující fotografie (→)"
+            className={cn(
+              "absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10",
+              "w-11 h-11 rounded-full bg-cream/10 hover:bg-cream/20 border border-cream/20 hover:border-cream/40",
+              "text-cream flex items-center justify-center transition-all duration-200",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+            )}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M7 3.5L12.5 9 7 14.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          {/* Image */}
           <div
-            className="relative max-w-5xl w-full max-h-[85vh]"
+            className="relative max-w-5xl w-full max-h-[85vh] flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <Image
+              key={lightbox.src}
               src={lightbox.src}
               alt={lightbox.alt}
               width={1200}
               height={900}
-              className="w-full h-full object-contain rounded-lg"
+              className="max-h-[85vh] w-auto h-auto object-contain rounded-lg"
               quality={95}
               priority
             />
