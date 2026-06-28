@@ -33,25 +33,11 @@ export function WorkSection({
       id={id}
       aria-labelledby={`${id}-title`}
       className={cn(
-        "relative py-24 md:py-36",
+        "py-24 md:py-36",
         accent ? "bg-charcoal text-cream" : "bg-cream text-ink"
       )}
     >
-      {accent && (
-        <>
-          {/* Fade in from cream above */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-cream to-transparent pointer-events-none z-0"
-          />
-          {/* Fade out to cream/mist below */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-cream pointer-events-none z-0"
-          />
-        </>
-      )}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <ScrollReveal className="mb-16">
           <div className={cn("flex items-start gap-6", reverse ? "justify-end text-right" : "")}>

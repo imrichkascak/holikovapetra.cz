@@ -57,19 +57,9 @@ export function Contact() {
     <section
       id="kontakt"
       aria-labelledby="contact-title"
-      className="relative py-24 md:py-40 bg-charcoal text-cream"
+      className="py-24 md:py-40 bg-charcoal text-cream"
     >
-      {/* Fade in from cream above */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-cream to-transparent pointer-events-none z-0"
-      />
-      {/* Fade out to ink (Footer) below */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-ink pointer-events-none z-0"
-      />
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
           {/* Left column — info */}
           <div>
