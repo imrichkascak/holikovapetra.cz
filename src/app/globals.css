@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: #F9F7F4;
+  --color-ink: #0D0C0B;
+  --color-gold: #A08050;
+  --color-gold-light: #C9A96E;
+  --color-mist: #EAE7E1;
+  --color-dust: #7A7067;
+  --color-charcoal: #2C2A27;
+  --color-background: #F9F7F4;
+  --color-foreground: #0D0C0B;
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-cormorant);
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F9F7F4;
+  color: #0D0C0B;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #A08050;
+  color: #F9F7F4;
+}
+
+/* Scroll-driven animation utilities */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-fade {
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  .reveal-fade.in-view {
+    opacity: 1;
+  }
+
+  .iris-reveal {
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .iris-reveal.in-view {
+    clip-path: circle(150% at 50% 50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up,
+  .reveal-fade,
+  .iris-reveal {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+}
+
+/* Focus visible styles */
+:focus-visible {
+  outline: 2px solid #A08050;
+  outline-offset: 2px;
 }
