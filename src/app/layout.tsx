@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,7 +17,7 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const siteUrl = "https://holikovapetra.cz";
+const siteUrl = "https://holikovapetracz.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -96,6 +97,7 @@ export default function RootLayout({
     >
       <body className="bg-cream text-ink antialiased overflow-x-hidden">
         {children}
+        <Analytics />
       </body>
     </html>
   );
