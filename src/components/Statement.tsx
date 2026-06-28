@@ -44,9 +44,14 @@ export function Statement() {
   return (
     <section
       aria-label="Citát"
-      className="py-28 md:py-40 px-6 md:px-12 max-w-7xl mx-auto"
+      className="relative overflow-hidden py-28 md:py-40"
     >
-      <div ref={containerRef} className="max-w-4xl">
+      {/* Fade from Hero's dark bottom into cream */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink to-transparent pointer-events-none z-0"
+      />
+      <div ref={containerRef} className="relative z-10 max-w-4xl px-6 md:px-12 mx-auto">
         <p
           className="font-display text-[clamp(2rem,5vw,4.5rem)] font-light italic leading-[1.2] text-ink"
           aria-label="Moje práce je zachycovat ty nejkrásnější okamžiky ve Vašem životě."
