@@ -88,7 +88,6 @@ export function MasonryGallery({ id, images }: MasonryGalleryProps) {
                     src={img.src}
                     alt={img.alt}
                     fill
-                    priority={i < 3}
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                     quality={75}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

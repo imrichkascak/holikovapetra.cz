@@ -95,10 +95,6 @@ export default function RootLayout({
       lang="cs"
       className={`${inter.variable} ${cormorant.variable}`}
     >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
       <body className="bg-cream text-ink antialiased overflow-x-hidden">
         {children}
         <Analytics />
