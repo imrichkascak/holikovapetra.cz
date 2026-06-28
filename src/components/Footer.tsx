@@ -5,7 +5,7 @@ export function Footer() {
 
   return (
     <footer role="contentinfo" className="bg-ink py-10 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-cream/30">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-cream/60">
         <p className="font-display text-base italic">Petra Holíková</p>
 
         <nav aria-label="Patička — navigace">
@@ -17,7 +17,7 @@ export function Footer() {
                   e.preventDefault();
                   document.querySelector("#prace")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="hover:text-cream/60 transition-colors"
+                className="hover:text-cream transition-colors"
               >
                 Práce
               </a>
@@ -29,7 +29,7 @@ export function Footer() {
                   e.preventDefault();
                   document.querySelector("#o-mne")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="hover:text-cream/60 transition-colors"
+                className="hover:text-cream transition-colors"
               >
                 O mně
               </a>
@@ -41,7 +41,7 @@ export function Footer() {
                   e.preventDefault();
                   document.querySelector("#kontakt")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="hover:text-cream/60 transition-colors"
+                className="hover:text-cream transition-colors"
               >
                 Kontakt
               </a>
