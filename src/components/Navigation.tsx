@@ -115,7 +115,10 @@ export function Navigation() {
         aria-label="Navigační menu"
         aria-modal="true"
         className={cn(
-          "md:hidden absolute inset-x-0 bg-cream/95 backdrop-blur-xl border-b border-mist transition-all duration-300 overflow-hidden",
+          "md:hidden absolute inset-x-0 backdrop-blur-xl border-b transition-all duration-300 overflow-hidden",
+          scrolled
+            ? "bg-cream/95 border-mist"
+            : "bg-ink/90 border-white/10",
           menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
         )}
       >
@@ -128,7 +131,12 @@ export function Navigation() {
                   e.preventDefault();
                   handleNavClick(link.href);
                 }}
-                className="text-sm font-sans font-medium uppercase tracking-widest text-dust hover:text-gold transition-colors"
+                className={cn(
+                  "text-sm font-sans font-medium uppercase tracking-widest transition-colors",
+                  scrolled
+                    ? "text-dust hover:text-gold"
+                    : "text-cream/80 hover:text-gold-light"
+                )}
               >
                 {link.label}
               </a>
