@@ -57,7 +57,6 @@ const galleryImages = [
   { src: "/images/gallery/DSC_0058_1.jpg", alt: "Fotografie" },
   { src: "/images/gallery/IMG_0887.jpg", alt: "Fotografie" },
   { src: "/images/gallery/TFKF9024.jpg", alt: "Fotografie" },
-  { src: "/images/okamziky/DSC_0184.jpg", alt: "Detail" },
   { src: "/images/gallery/120134271_3409187615812613_3923097025196652216_o.jpg", alt: "Fotografie" },
   { src: "/images/gallery/IMG_0915.jpg", alt: "Fotografie" },
   { src: "/images/gallery/120156686_3409187612479280_3025171193573527671_o.jpg", alt: "Fotografie" },
