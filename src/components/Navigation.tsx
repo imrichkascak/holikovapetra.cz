@@ -68,26 +68,43 @@ export function Navigation() {
             Petra Holíková
           </a>
 
-          {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-10 list-none" role="list">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  }}
-                  className={cn(
-                    "text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-300 hover:text-gold",
-                    scrolled ? "text-dust" : "text-cream/80"
-                  )}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+        {/* Desktop links */}
+        <ul className="hidden md:flex items-center gap-10 list-none" role="list">
+          {navLinks.filter((l) => l.href !== "#kontakt").map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }}
+                className={cn(
+                  "text-xs font-sans font-medium uppercase tracking-widest transition-colors duration-300 hover:text-gold",
+                  scrolled ? "text-dust" : "text-cream/80"
+                )}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="#kontakt"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick("#kontakt");
+              }}
+              className={cn(
+                "text-xs font-sans font-medium uppercase tracking-widest px-5 py-2 rounded-full border transition-all duration-300 hover:bg-gold hover:border-gold hover:text-cream",
+                scrolled
+                  ? "border-ink/30 text-ink"
+                  : "border-cream/50 text-cream"
+              )}
+            >
+              Kontakt
+            </a>
+          </li>
+        </ul>
 
           {/* Mobile hamburger */}
           <button
