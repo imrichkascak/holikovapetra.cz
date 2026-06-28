@@ -74,7 +74,7 @@ export function MasonryGallery({ id, images }: MasonryGalleryProps) {
             >
               <button
                 onClick={() => setLightboxIndex(i)}
-                className="group relative block w-full overflow-hidden rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+                className="group relative block w-full overflow-hidden rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
                 aria-label={`Zobrazit fotografii: ${img.alt}`}
               >
                 {/* Fixed aspect-ratio wrapper prevents layout shift before image loads */}
